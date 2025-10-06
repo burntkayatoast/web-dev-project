@@ -4,19 +4,22 @@
   "description": "a movie app for users to add films/shows to a collection and create reviews",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node script.js",
+    "start": "node script.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/burntkayatoast/web-dev-project.git"
   },
-  "author": "renee and blessing",
+  "author": "Blessing and Renee",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/burntkayatoast/web-dev-project/issues"
   },
   "homepage": "https://github.com/burntkayatoast/web-dev-project#readme",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.1.0"
   }
