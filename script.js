@@ -5,8 +5,11 @@ const express = require('express') // includes express library
 const app = express() // creates an express app
 app.set('view engine', 'ejs') // sets the view engine to ejs
 
-// Allow access to views folder
-app.use(express.static('views')) 
+app.use(express.static('views')) // Allow access to views folder
+app.use(express.static('public')) // Allow access to public folder
+app.use(express.static('app')) // Allow access to app folder
+
+
 
 //allows the extraction of an incoming request object and makes it available using req.body
 const bodyParser = require('body-parser')
