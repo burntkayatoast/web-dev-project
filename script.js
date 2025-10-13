@@ -9,8 +9,6 @@ app.use(express.static('views')) // Allow access to views folder
 app.use(express.static('public')) // Allow access to public folder
 app.use(express.static('app')) // Allow access to app folder
 
-
-
 //allows the extraction of an incoming request object and makes it available using req.body
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended: true}))
@@ -22,6 +20,12 @@ const TMDB_API_KEY = process.env.TMDB_API_KEY;
 app.get('/', (req, res) => {
   res.render("home")
   console.log('the home page is loaded')
+})
+
+// search page
+app.get('/search', (req, res) => {
+  res.render("search")
+  console.log('the search page is loaded')
 })
 
 // requirements to start the server
