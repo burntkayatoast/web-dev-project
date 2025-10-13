@@ -25,8 +25,6 @@ async function displayMovies(movies) {
         document.getElementById('movies').innerHTML = movies.map(movie => `
             <div class="movie">
                 <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
-                <h3>${movie.title}</h3>
-                <p>⭐ ${movie.vote_average}</p>
             </div>
         `).join('');
     } catch (error) {
@@ -34,5 +32,9 @@ async function displayMovies(movies) {
         console.error(error);
     }
 }
+
+// this was in the display movies functions
+// <h3>${movie.title}</h3>
+//<p>⭐ ${movie.vote_average}</p>
 
 loadMovies();
