@@ -13,6 +13,11 @@
   padding: 0;
 }
 
+a {
+  color: var(--white);
+  text-decoration: none;
+}
+
 
 body {
   padding-top: 9vh;
@@ -30,6 +35,7 @@ body {
 .movie {
   /* background-color: #222; */
   /* border-radius: 5px; */
+  flex: 0 0 auto;
   padding: 10px;
   width: 200px; /* changed from 180 to 200 */
 }
@@ -77,3 +83,15 @@ h3 {
   
 }
 
+.movie-row {
+  display: flex;
+  overflow-x: auto;
+}
+.section {
+  margin-bottom: 40px;
+}
+.section-header {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
