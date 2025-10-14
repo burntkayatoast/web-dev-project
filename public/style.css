@@ -58,7 +58,7 @@ body {
   color: var(--white);
 }
 
-#movies {
+#popular {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -68,7 +68,21 @@ body {
   margin-top: 20px;
 }
 
-#movies::-webkit-scrollbar {
+#popular::-webkit-scrollbar {
+  display: none;
+}
+
+#free {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px;
+  white-space: nowrap;
+  margin-top: 20px;
+}
+
+#free::-webkit-scrollbar {
   display: none;
 }
 
@@ -129,9 +143,28 @@ h3 {
   
 }
 
-#movies.movie-row {
+#popular.movie-row {
   display: flex;
   overflow-x: auto;
+}
+
+#free.movie-row {
+  display: flex;
+  overflow-x: auto;
+}
+
+#allPopular {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#allFree {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .section {
