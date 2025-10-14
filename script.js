@@ -29,6 +29,12 @@ app.get('/search', (req, res) => {
   console.log('the search page is loaded')
 })
 
+// popular movies
+app.get('/popular_movies', (req, res) => {
+  res.render("popular_movies") 
+  console.log('the popular movie page is loaded')
+})
+
 // fetching movies from api
 app.get('/api/movies', async (req, res) => {
   try {
@@ -41,6 +47,7 @@ app.get('/api/movies', async (req, res) => {
     res.status(500).json({message: 'Error loading movies'})
   }
 })
+
 
 // requirements to start the server
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0', function() {

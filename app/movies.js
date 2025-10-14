@@ -36,8 +36,7 @@ async function displayMovies(movies) {
 async function seeAll() {
     const seeAllBtn = document.querySelector('.see-all');
     const movieRow = document.getElementById('movies');
-
-    // yeah....
+    
 }
 
 // this was in the display movies functions
