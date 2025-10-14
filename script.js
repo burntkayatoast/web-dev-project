@@ -35,6 +35,12 @@ app.get('/popular_movies', (req, res) => {
   console.log('the popular movie page is loaded')
 })
 
+// profile
+app.get('/profile', (req, res) => {
+  res.render("profile")
+  console.log('the profile page is loaded')
+})
+
 // fetching movies from api
 app.get('/api/movies', async (req, res) => {
   try {

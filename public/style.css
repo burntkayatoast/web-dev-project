@@ -4,6 +4,7 @@
   --white: #dedede;
   --dark: #000;
   --body: #111;
+  --dmAccent: #222;
 
 }
 
@@ -16,6 +17,16 @@
 a {
   color: var(--white);
   text-decoration: none;
+}
+
+p {
+  line-height: 1.5;
+  background-color: var(--dmAccent);
+  margin: 20px;
+  padding: 1em;
+}
+p span {
+  padding-left: 10px;
 }
 
 
@@ -54,7 +65,7 @@ body {
 }
 
 .movie img:hover {
-  filter: brightness(60%);
+  filter: brightness(70%);
 }
 
 h3 {
