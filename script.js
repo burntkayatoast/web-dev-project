@@ -9,6 +9,7 @@ app.set('view engine', 'ejs') // sets the view engine to ejs
 app.use(express.static('views')) // Allow access to views folder
 app.use(express.static('public')) // Allow access to public folder
 app.use(express.static('app')) // Allow access to app folder
+app.use(express.static('models')) // Allow access to models folder
 
 // so default image is there
 app.use('/images', express.static('images'))
@@ -45,10 +46,10 @@ app.get('/profile', (req, res) => {
 })
 
 // fetching movies from api
-app.get('/api/movies', async (req, res) => {
+app.get('/api/popular', async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-Uk&page=1`
+      `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-Uk&page=1`
     )
     res.json(response.data.results)
   } catch (err) {
@@ -57,6 +58,58 @@ app.get('/api/movies', async (req, res) => {
   }
 })
 
+// fetching movies from api
+app.get('/api/free', async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-Uk&with_watch_monetizion_types=free&page=1`
+    )
+    res.json(response.data.results)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({message: 'Error loading movies'})
+  }
+})
+
+// fetching movies from api
+app.get('/api/popular/all', async (req, res) => {
+  try {
+    const allMovies = []
+
+    for (let page = 1; page <= 5; page++) {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-Uk&page=${page}`
+      )
+    
+      allMovies.push(...response.data.results)
+    }
+
+    res.json(allMovies)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({message: 'Error loading movies'})
+  }
+})
+
+// fetching movies from api
+app.get('/api/free/all', async (req, res) => {
+  try {
+    const allMovies = []
+
+    for (let page = 1; page <= 5; page++) {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-Uk&with_watch_monetizion_types=free&page=${page}`
+      )
+    
+      allMovies.push(...response.data.results)
+    }
+
+    res.json(allMovies)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({message: 'Error loading movies'})
+  }
+})
 
 // requirements to start the server
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0', function() {

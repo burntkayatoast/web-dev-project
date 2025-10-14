@@ -12,17 +12,20 @@
     
 // }
 
-async function loadMovies() {
-    const response = await fetch('/api/movies');
-    const movies = await response.json();
-    console.log("showing movies")
-
-    displayMovies(movies)
+async function fetchMovies(endPoint, containerId) {
+    try {
+        const response = await fetch(endPoint);
+        const movies = await response.json();
+        displayMovies(movies, containerId)
+    } catch (error) {
+        console.error(error)
+    }
 }
 
-async function displayMovies(movies) {
+async function displayMovies(movies, containerId) {
     try {
-        document.getElementById('movies').innerHTML = movies.map(movie => `
+        const container = document.getElementById(containerId)
+        container.innerHTML = movies.map(movie => `
             <div class="movie">
                 <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
             </div>
@@ -43,4 +46,9 @@ async function seeAll() {
 // <h3>${movie.title}</h3>
 //<p>⭐ ${movie.vote_average}</p>
 
-loadMovies();
+fetchMovies('/api/popular', 'popular')
+fetchMovies('/api/popular/all', 'allPopular')
+fetchMovies('/api/free', 'free')
+fetchMovies('/api/free/all', 'allFree')
+
+

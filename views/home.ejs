@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+<%- include('partials/header') -%>
 
-        <link rel="stylesheet" href="/style.css">
-        <script src="movies.js"></script>
-
-        <title>Movie Finder</title>
-    </head>
     <body>
         <div id="header">
             <h1>Movie App </h1>
@@ -22,7 +12,7 @@
                     <h2>Popular Movies</h2>
                     <a href="/popular_movies" class="see-all">see all</a>
                 </div>
-                <div id="movies">
+                <div id="popular">
                     <div class="loader"></div>
                 </div>
             </div>
@@ -30,31 +20,18 @@
             <!-- TRENDING SECTION -->
             <div class="section">
                 <div class="section-header">
-                    <h2>Trending</h2>
-                    <a href="/trending_movies" class="see-all">see all</a>
+                    <h2>Free to Watch</h2>
+                    <a href="/free_movies" class="see-all">see all</a>
                 </div>
-                <div id="movies">
+                <div id="free">
                     <div class="loader"></div>
                 </div>
-            </div>
-
-
-
-            
+            </div>            
         </div>
 
         
-        <div id="footer">
-            <a href="/"><i class="bi bi-house-door-fill"></i></a>
+        <%- include('partials/footer') -%>
 
-            <a href="/movies"><i class="bi bi-film"></i></a>
-
-            <a href="/search"><i class="bi bi-search"></i></a>
-
-            <a href="/tv_shows"><i class="bi bi-tv"></i></a>
-
-            <a href="/profile"><i class="bi bi-person-circle"></i></a>
-        </div>
     </body>
 </html>
         
