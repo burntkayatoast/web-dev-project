@@ -8,18 +8,15 @@
           <div id="content">
             <center>
               <div class="image">
-                <img src="/images/default.jpg">
+                <img id="profileImage" src="/images/default.jpg">
               </div>
             </center>
             
             <p>
-              <i class="bi bi-file-person-fill"></i> <span>change profile pic
-                <label for="file-path">
-                  <i class="bi bi-pencil-square"></i>
-                </label>
-
-                <input type="file" accept="image/jpeg, image/png, image/jpg">
-              </span>
+              <label for="file-path">
+                <i class="bi bi-pencil-square"></i> <span>change your profile pic</span>
+              </label>
+              <input type="file" accept="image/jpeg, image/png, image/jpg" id="file-path" class="user-file">
             </p>
             
             <p>
@@ -35,6 +32,7 @@
 
         
         <%- include('partials/footer') -%>
+    <script src="/app/profile.js"></script>
     </body>
 </html>
         
