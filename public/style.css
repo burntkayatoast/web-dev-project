@@ -29,6 +29,26 @@ p span {
   padding-left: 10px;
 }
 
+.image {
+  position: relative;
+}
+.image img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.image label {
+  color: var(--white);
+  position: absolute;
+  top: 130px;
+  right: 59%;
+}
+#file-path {
+  display: none;
+}
+
 
 body {
   padding-top: 9vh;

@@ -10,6 +10,9 @@ app.use(express.static('views')) // Allow access to views folder
 app.use(express.static('public')) // Allow access to public folder
 app.use(express.static('app')) // Allow access to app folder
 
+// so default image is there
+app.use('/images', express.static('images'))
+
 //allows the extraction of an incoming request object and makes it available using req.body
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended: true}))
