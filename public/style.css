@@ -1,10 +1,14 @@
-
+@import url('https://fonts.cdnfonts.com/css/lovelo');
 
 :root {
   --white: #dedede;
   --dark: #000;
   --body: #111;
   --dmAccent: #222;
+  --accent: #e6c677;
+
+  --loveloFont: 'Lovelo', sans-serif;
+                                                
 
 }
 
@@ -120,13 +124,42 @@ h3 {
   text-align: left;
   z-index: 9999;
 }
+#header h1 {
+  text-transform: uppercase;
+  font-family: var(--loveloFont);
+  font-weight: 900;
+  letter-spacing: 4px;
+  font-style: italic;
+}
+
+
+#nav {
+  position: relative;
+  left: 5%;
+  justify-content: space-evenly;
+}
+#nav, #search, #profile, a {
+  padding-right: 25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: ease-in-out .3s;
+}
+#nav a:hover {
+  color: var(--accent);
+}
+
+#profile {
+  font-size: 150%;
+}
+
+
 
 #content {
   padding: 20px;
 }
 
 #footer { 
-  display: flex;
+  display: none;
   align-items: center;
   height: 7vh;
   width: 100%;
@@ -168,6 +201,10 @@ h3 {
   margin-top: 20px;
 }
 
+.see-all {
+  color: var(--accent);
+}
+
 .section {
   margin-bottom: 40px;
 }
@@ -196,3 +233,20 @@ h3 {
   animation: l3 1s infinite linear;
 }
 @keyframes l3 {to{transform: rotate(1turn)}}
+
+
+
+@media screen and (max-width: 1000px) {
+  body {
+    zoom: 1.5;
+  }
+
+  #footer {
+    display: flex;
+  }
+
+  #nav-cont {
+    display: none;
+  }
+  
+}
