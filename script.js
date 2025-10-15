@@ -63,6 +63,12 @@ app.get('/tv_shows', (req, res) => {
   console.log('the tv shows page is loaded')
 })
 
+// about section
+app.get('/about', (req, res) => {
+  res.render("about")
+  console.log('the about page is loaded')
+})
+
 // fetching movies from api
 app.get('/api/popular', async (req, res) => {
   try {

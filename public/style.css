@@ -189,6 +189,10 @@ h3 {
   align-items: center;
 }
 
+.spacing {
+  padding-left: 10px;
+}
+
 /* loading animation hehe */
 .loader {
   overflow: hidden;
