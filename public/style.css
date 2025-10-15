@@ -203,6 +203,8 @@ h3 {
 
 .see-all {
   color: var(--accent);
+  text-transform: lowercase;
+  font-size: 14px;
 }
 
 .section {
@@ -245,7 +247,7 @@ h3 {
     display: flex;
   }
 
-  #nav-cont {
+  #nav {
     display: none;
   }
   
