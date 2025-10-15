@@ -46,9 +46,21 @@ app.get('/profile', (req, res) => {
 })
 
 // free movies
-app.get('/free_movies', (req, res) => {
-  res.render("free_movies") 
-  console.log('the free movie page is loaded')
+app.get('/popular_tv_shows', (req, res) => {
+  res.render("p_tv_shows") 
+  console.log('the trending tv shows page is loaded')
+})
+
+// movies page
+app.get('/movies', (req, res) => {
+  res.render("movies")
+  console.log('the movies page is loaded')
+})
+
+// tv shows page
+app.get('/tv_shows', (req, res) => {
+  res.render("tv_shows")
+  console.log('the tv shows page is loaded')
 })
 
 // fetching movies from api
@@ -65,10 +77,10 @@ app.get('/api/popular', async (req, res) => {
 })
 
 // fetching movies from api
-app.get('/api/free', async (req, res) => {
+app.get('/api/p_tv_show', async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-Uk&with_watch_monetizion_types=free&page=1`
+      `https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}&language=en-Uk&page=1`
     )
     res.json(response.data.results)
   } catch (err) {
@@ -98,13 +110,13 @@ app.get('/api/popular/all', async (req, res) => {
 })
 
 // fetching movies from api
-app.get('/api/free/all', async (req, res) => {
+app.get('/api/p_tv_show/all', async (req, res) => {
   try {
     const allMovies = []
 
     for (let page = 1; page <= 5; page++) {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-Uk&with_watch_monetizion_types=free&page=${page}`
+        `https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}&language=en-Uk&page=${page}`
       )
     
       allMovies.push(...response.data.results)
@@ -114,6 +126,46 @@ app.get('/api/free/all', async (req, res) => {
   } catch (err) {
     console.error(err)
     res.status(500).json({message: 'Error loading movies'})
+  }
+})
+
+// fetching movies from api
+app.get('/api/movies', async (req, res) => {
+  try {
+    const allMovies = []
+
+    for (let page = 1; page <= 20; page++) {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-Uk&page=${page}`
+      )
+    
+      allMovies.push(...response.data.results)
+    }
+
+    res.json(allMovies)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({message: 'Error loading movies'})
+  }
+})
+
+// fetching movies from api
+app.get('/api/tv_shows', async (req, res) => {
+  try {
+    const allTvShows = []
+
+    for (let page = 1; page <= 20; page++) {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-Uk&page=${page}`
+      )
+    
+      allTvShows.push(...response.data.results)
+    }
+
+    res.json(allTvShows)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({message: 'Error loading tv shows'})
   }
 })
 

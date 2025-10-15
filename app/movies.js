@@ -39,7 +39,6 @@ async function displayMovies(movies, containerId) {
 async function seeAll() {
     const seeAllBtn = document.querySelector('.see-all');
     const movieRow = document.getElementById('movies');
-    
 }
 
 // this was in the display movies functions
@@ -48,7 +47,10 @@ async function seeAll() {
 
 fetchMovies('/api/popular', 'popular')
 fetchMovies('/api/popular/all', 'allPopular')
-fetchMovies('/api/free', 'free')
-fetchMovies('/api/free/all', 'allFree')
+fetchMovies('/api/p_tv_show', 'tvShows')
+fetchMovies('/api/p_tv_show/all', 'allTvShows')
+fetchMovies('/api/movies', 'allMovies')
+fetchMovies('/api/tv_shows', 'tv_shows')
+
 
 
