@@ -1,12 +1,22 @@
 <%- include('partials/header') -%>
 
-        <div id="content">
-            <form action="/search" method="get">
-                <input name="q" placeholder="Search for a movie, genre, actor..." required />
-                <button>Search</button>
-                <a href="/">lalala</a>
-            </form>
-        </div>
+        <center>
+            <div id="content">
+                <h2>Find Movies/TV Shows</h2><br>
+                <input type="text" id="searchInput" class="box" placeholder="Search for a movie, genre, actor..." required />
+                <button id="searchBtn" class="search">Search</button>
+            </div>
+        </center>
+
+        <% if (isMovie === 0) { %>
+            <div class="movie-row" id="allPopular">
+                <div class="loader"></div>
+            </div>
+        <% } else { %>
+            <div class="movie-row" id="allTvShows">
+                <div class="loader"></div>
+            </div>
+        <% } %>
 
         <%- include('partials/footer') -%>
     </body>
