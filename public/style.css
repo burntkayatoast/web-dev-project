@@ -335,7 +335,6 @@ h3 {
   }
 
   .section-header {
-    display: block;
     margin-bottom: 10px;
   }
 
@@ -364,7 +363,7 @@ h3 {
 
   .container {
     max-width: 100%;
-    padding: 1.5em;
+    padding: 15px;
     width: 100%;
     box-sizing: border-box;
   }
