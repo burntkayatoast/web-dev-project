@@ -227,9 +227,30 @@ h3 {
   width: 300px;
 }
 
-.movie-details.info {
-  max-width: 600px;
-  line-height: 1.6;
+.container {
+  background-color: var(--dmAccent);
+  border-radius: 12px;
+  padding: 1em;
+  max-width: 700px;
+  line-height: 1.5;
+  align-items: flex-start;
+}
+
+.genre-cont { 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+.genre {
+  background-color: var(--accent);
+  color: var(--dark);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* loading animation hehe */
@@ -254,9 +275,9 @@ h3 {
 
 
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 900px) {
   body {
-    zoom: 1.5;
+    zoom: 1;
   }
 
   #footer {

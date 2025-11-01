@@ -3,35 +3,35 @@
         <div id="content">
             <!--  VIEW SECTION -->
             <div class="section">
-                <div class="section-header">
-                    <h2><%= movie.title || movie.name %></h2>
-                </div>
                 <div class="movie-details">
                     <img src="https://image.tmdb.org/t/p/w400<%= movie.poster_path %>" alt="<%= movie.title || movie.name %>">
-                    <div class="info">
-                        <div>
-                            <p><strong>Release Date:</strong> <%= new Date(movie.release_date || movie.first_air_date).toLocaleDateString('en-US', {
+                    <div class="container">
+                        <div class="section-header">
+                            <span><%= movie.title || movie.name %></span> 
+                        </div>
+                        <hr><br>  
+                        <i><%= new Date(movie.release_date || movie.first_air_date).toLocaleDateString('en-US', {
                                 year: 'numeric', 
                                 month: 'long', 
                                 day: 'numeric'
-                            }) %></p>
-                            <p><strong>Rating:</strong> <%= movie.vote_average %>/10 <br> 
-                                <% if (movie.vote_average > 8.5) { %>
-                                    &#9733; &#9733; &#9733; &#9733; &#9733;
-                                <% } else if (movie.vote_average > 7) { %>
-                                    &#9733; &#9733; &#9733; &#9733;
-                                <%  } else if (movie.vote_average > 5) { %>
-                                    &#9733; &#9733; &#9733; 
-                                <%  } else if (movie.vote_average > 3.5) { %>
-                                    &#9733; &#9733; 
-                                <% } else { %>
-                                    &#9733; 
-                                <% } %>                                  
-                            </p>
-                            <p><strong>Description:</strong> <%= movie.overview %></p>
-                            <% if (movie.genres && movie.genres.length) { %>
-                                <p><strong>Genres:</strong> <%= movie.genres.map(g => g.name).join(', ') %></p>
-                            <% } %>
+                            }) %>.</i>
+                        <% if (director) { %>
+                            Directed by <strong><%= director.name %></strong>
+                        <% } else if (creators && creators.length > 0) { %>
+                            Created by <strong><%= creators.map(creator => creator.name).join(', ') %></strong>
+                        <% } %>
+
+                        <br><br>
+                        <%= movie.overview %>
+                        <br><br>
+                        <% if (movie.genres && movie.genres.length) { %>
+                        <div class="genre-cont">
+                            <% movie.genres.forEach(genre => { %>
+                                <span class="genre"><%= genre.name %></span>
+                            <% }); %>
+                        </div>
+                        <% } %>
+                        
                     </div>
                 </div>
             </div>            
