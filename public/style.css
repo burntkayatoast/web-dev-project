@@ -12,8 +12,6 @@
 }
 
 
-
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -292,8 +290,8 @@ h3 {
 
 @media screen and (max-width: 900px), screen and (max-device-width: 900px) {
   html {
-    -webkit-text-size-adjust: 150%;
-    text-size-adjust: 150%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   .movie-details > img {
