@@ -1,63 +1,90 @@
 <%- include('partials/header') -%>
 
-        <div id="content">
-            <!--  VIEW SECTION -->
-            <div class="section">
-                <div class="movie-details">
-                <img src="https://image.tmdb.org/t/p/w400<%= movie.poster_path %>" alt="<%= movie.title || movie.name %>">
-                <div class="container">
-                    <div class="mobile-content">
+<div id="content">
+    <!-- VIEW SECTION -->
+    <div class="section">
+        <div class="movie-details">
+            <!-- DESKTOP -->
+            <img src="https://image.tmdb.org/t/p/w400<%= movie.poster_path %>" alt="<%= movie.title || movie.name %>">
+
+            <div class="container">
+                <!-- MOBILE -->
+                <div class="mobile-content">
+                    <!-- TOP SECTION: Poster + Basic Info Side by Side -->
+                    <div class="mobile-top-section">
                         <div class="mobile-poster">
-                            <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path %>" alt="<%= movie.title || movie.name %>">
+                            <img src="https://image.tmdb.org/t/p/w300<%= movie.poster_path %>" alt="<%= movie.title || movie.name %>">
                         </div>
                         <div class="movie-info">
-                            <div class="section-header">
-                                <span><%= movie.title || movie.name %></span> 
-                            </div>
-                            <hr><br>  
-                            <i><%= new Date(movie.release_date || movie.first_air_date).toLocaleDateString('en-US', {
+                            <div class="section-header-pg">
+                                <span><%= movie.title || movie.name %></span><br>
+                                <i><%= new Date(movie.release_date || movie.first_air_date).toLocaleDateString('en-US', {
                                     year: 'numeric', 
                                     month: 'long', 
                                     day: 'numeric'
-                                }) %>.</i>
+                                }) %>.</i> 
+                            </div>
+                            <hr>
                             <% if (director) { %>
-                                Directed by <strong><%= director.name %></strong>
+                                <br>Directed by <strong><%= director.name %></strong>
                             <% } else if (creators && creators.length > 0) { %>
-                                Created by <strong><%= creators.map(creator => creator.name).join(', ') %></strong>
+                                <br>Created by <strong><%= creators.map(creator => creator.name).join(', ') %></strong>
                             <% } %>
 
                             <br>
+                            <%= movie.vote_average.toFixed(1) %>/10 -
                             <% if (movie.vote_average > 8.5) { %>
-                                    &#9733; &#9733; &#9733; &#9733; &#9733;
-                                <% } else if (movie.vote_average > 7) { %>
-                                    &#9733; &#9733; &#9733; &#9733;
-                                <%  } else if (movie.vote_average > 5) { %>
-                                    &#9733; &#9733; &#9733; 
-                                <%  } else if (movie.vote_average > 3.5) { %>
-                                    &#9733; &#9733; 
-                                <% } else { %>
-                                    &#9733; 
-                                <% } %> 
-                                <%= movie.vote_average %>/10 
-
-                            <br><br>
-                            <%= movie.overview %>
-                            <br><br>
-                            <% if (movie.genres && movie.genres.length) { %>
-                            <div class="genre-cont">
-                                <% movie.genres.forEach(genre => { %>
-                                    <span class="genre"><%= genre.name %></span>
-                                <% }); %>
-                            </div>
-                            <% } %>
+                                &#9733; &#9733; &#9733; &#9733; &#9733;
+                            <% } else if (movie.vote_average > 7) { %>
+                                &#9733; &#9733; &#9733; &#9733;
+                            <% } else if (movie.vote_average > 5) { %>
+                                &#9733; &#9733; &#9733; 
+                            <% } else if (movie.vote_average > 3.5) { %>
+                                &#9733; &#9733; 
+                            <% } else { %>
+                                &#9733; 
+                            <% } %> 
                         </div>
+                    </div>
+                    
+                    <!-- BOTTOM SECTION -->
+                    <div class="movie-synopsis">
+                        <%= movie.overview %>
+                        <br><br>
+                        <% if (movie.genres && movie.genres.length) { %>
+                        <div class="genre-cont">
+                            <% movie.genres.forEach(genre => { %>
+                                <span class="genre"><%= genre.name %></span>
+                            <% }); %>
+                        </div>
+                        <% } %>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>            
+</div>
 
-        
-        <%- include('partials/footer') -%>
-
-    </body>
+<%- include('partials/footer') -%>
+</body>
 </html>
         
+<!-- !!!!!!!!!!!!!!!
+
+!! NOTE TO SELF, MOVE THE MOVIE SYNOPSIS UNDERNEATH THE MOVIE POSTER. SHOULD LOOK LIKE THIS
+
+! --------------------
+! -                  -  MOVIE TITLE 
+! -                  -  DIRECTOR/CREATOR
+! -                  -  RATING
+! -     POSTER       -
+! -                  -
+! -                  -
+! -                  -
+! -                  -
+! --------------------
+!
+!   MOVIE DESCRIPTION/SUNOPSIS HERE.
+! 
+ 
+!!!!!!!!!!!!!!! -->
