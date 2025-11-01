@@ -4,38 +4,42 @@
             <!--  VIEW SECTION -->
             <div class="section">
                 <div class="movie-details">
-                    <img src="https://image.tmdb.org/t/p/w400<%= movie.poster_path %>" alt="<%= movie.title || movie.name %>">
-                    <div class="container">
-                        <div class="section-header">
-                            <span><%= movie.title || movie.name %></span> 
+                <img src="https://image.tmdb.org/t/p/w400<%= movie.poster_path %>" alt="<%= movie.title || movie.name %>">
+                <div class="container">
+                    <div class="mobile-content">
+                        <div class="mobile-poster">
+                            <img src="https://image.tmdb.org/t/p/w200<%= movie.poster_path %>" alt="<%= movie.title || movie.name %>">
                         </div>
-                        <hr><br>  
-                        <i><%= new Date(movie.release_date || movie.first_air_date).toLocaleDateString('en-US', {
-                                year: 'numeric', 
-                                month: 'long', 
-                                day: 'numeric'
-                            }) %>.</i>
-                        <% if (director) { %>
-                            Directed by <strong><%= director.name %></strong>
-                        <% } else if (creators && creators.length > 0) { %>
-                            Created by <strong><%= creators.map(creator => creator.name).join(', ') %></strong>
-                        <% } %>
+                        <div class="movie-info">
+                            <div class="section-header">
+                                <span><%= movie.title || movie.name %></span> 
+                            </div>
+                            <hr><br>  
+                            <i><%= new Date(movie.release_date || movie.first_air_date).toLocaleDateString('en-US', {
+                                    year: 'numeric', 
+                                    month: 'long', 
+                                    day: 'numeric'
+                                }) %>.</i>
+                            <% if (director) { %>
+                                Directed by <strong><%= director.name %></strong>
+                            <% } else if (creators && creators.length > 0) { %>
+                                Created by <strong><%= creators.map(creator => creator.name).join(', ') %></strong>
+                            <% } %>
 
-                        <br><br>
-                        <%= movie.overview %>
-                        <br><br>
-                        <% if (movie.genres && movie.genres.length) { %>
-                        <div class="genre-cont">
-                            <% movie.genres.forEach(genre => { %>
-                                <span class="genre"><%= genre.name %></span>
-                            <% }); %>
+                            <br><br>
+                            <%= movie.overview %>
+                            <br><br>
+                            <% if (movie.genres && movie.genres.length) { %>
+                            <div class="genre-cont">
+                                <% movie.genres.forEach(genre => { %>
+                                    <span class="genre"><%= genre.name %></span>
+                                <% }); %>
+                            </div>
+                            <% } %>
                         </div>
-                        <% } %>
-                        
                     </div>
                 </div>
-            </div>            
-        </div>
+            </div>
 
         
         <%- include('partials/footer') -%>
