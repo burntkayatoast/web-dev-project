@@ -290,10 +290,10 @@ h3 {
 
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 900px), screen and (max-device-width: 900px) {
   html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 150%;
+    text-size-adjust: 150%;
   }
 
   .movie-details > img {
@@ -325,7 +325,6 @@ h3 {
     object-fit: cover;
   }
   .section-header {
-    display: block;
     margin-bottom: 10px;
   }
   

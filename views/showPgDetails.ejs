@@ -26,6 +26,20 @@
                                 Created by <strong><%= creators.map(creator => creator.name).join(', ') %></strong>
                             <% } %>
 
+                            <br>
+                            <% if (movie.vote_average > 8.5) { %>
+                                    &#9733; &#9733; &#9733; &#9733; &#9733;
+                                <% } else if (movie.vote_average > 7) { %>
+                                    &#9733; &#9733; &#9733; &#9733;
+                                <%  } else if (movie.vote_average > 5) { %>
+                                    &#9733; &#9733; &#9733; 
+                                <%  } else if (movie.vote_average > 3.5) { %>
+                                    &#9733; &#9733; 
+                                <% } else { %>
+                                    &#9733; 
+                                <% } %> 
+                                <%= movie.vote_average %>/10 
+
                             <br><br>
                             <%= movie.overview %>
                             <br><br>
