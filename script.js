@@ -80,7 +80,19 @@ app.get('/movies/:id', async (req, res) => {
     )
 
     const movie = response.data
-    res.render("showPgDetails", {movie})
+    const creditsResponse = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${API_KEY}&language=en-US`
+    )
+    const credits = creditsResponse.data
+
+    const director = credits.crew.find(person => person.job === 'Director')
+
+    res.render("showPgDetails", { 
+      movie: movie,
+      director: director,
+      creator: null
+      })
+
   } catch (err) {
     console.error(err)
     res.status(500).json({message: 'Error loading movie details'})
@@ -97,7 +109,15 @@ app.get('/tv_shows/:id', async (req, res) => {
     )
 
     const tvShow = response.data
-    res.render("showPgDetails", {movie: tvShow})
+    const creators = tvShow.created_by || []
+
+
+    res.render("showPgDetails", {
+      movie: tvShow,
+      director: null,
+      creators: creators
+    })
+
   } catch (err) {
     console.error(err)
     res.status(500).json({message: 'Error loading tv show details'})
