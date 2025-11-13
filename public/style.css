@@ -273,6 +273,99 @@ h3 {
   letter-spacing: 0.5px;
 }
 
+/* for login screen */
+.login-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-form {
+  display: flex;
+  gap: 10px;
+}
+
+.login-form input {
+  padding: 8px 10px;
+  border: 1px solid #555;
+  border-radius: 20px;
+  background: #eee;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-form input::placeholder {
+  color: #666;
+}
+
+.login-form button {
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #333;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.login-form button:hover {
+  background: #ddd;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    color: white;
+}
+
+.register-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 350px;               
+}
+
+.register-form input,
+.register-form select {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    background: #e0e0e0;
+    outline: none;
+    transition: 0.2s;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.register-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #ffffff;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.register-form button:hover {
+    background: #dddddd;
+    transform: translateY(-2px);
+}
+
 /* loading animation hehe */
 .loader {
   overflow: hidden;
