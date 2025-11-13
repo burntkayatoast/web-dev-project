@@ -2,9 +2,9 @@
 
 :root {
   --white: #dedede;
-  --dark: #000;
-  --body: #111;
-  --dmAccent: #222;
+  --dark: #111;
+  --body: #191919;
+  --dmAccent: #282828;
   --accent: #e6c677;
 
   --loveloFont: 'Lovelo', sans-serif;
@@ -147,8 +147,9 @@ h3 {
   font-size: 150%;
 }
 
-#content {
-  padding: 20px;
+#content, p {
+  padding: 15px;
+  border-radius: 5px;
 }
 
 #footer { 
@@ -171,14 +172,17 @@ h3 {
 }
 
 #popular.movie-row, #tvShows.movie-row {
-  display: flex;
+  display: grid;
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
   overflow-x: auto;
 }
 
 #allPopular, #allTvShows, #allMovies, #tv_shows {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 20px;
 }
 
