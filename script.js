@@ -239,7 +239,7 @@ app.get('/api/movies', async (req, res) => {
   try {
     const allMovies = []
 
-    for (let page = 1; page <= 20; page++) {
+    for (let page = 1; page <= 50; page++) {
       const response = await axios.get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}`
       )
@@ -259,7 +259,7 @@ app.get('/api/tv_shows', async (req, res) => {
   try {
     const allTvShows = []
 
-    for (let page = 1; page <= 20; page++) {
+    for (let page = 1; page <= 50; page++) {
       const response = await axios.get(
         `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&page=${page}`
       )
@@ -277,4 +277,4 @@ app.get('/api/tv_shows', async (req, res) => {
 // requirements to start the server
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0', function() {
   console.log("Server is running... YAYYYY!");
-})
+})     
