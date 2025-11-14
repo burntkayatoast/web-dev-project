@@ -21,7 +21,12 @@ app.use(session({
   secret: 'scene-it-super-secret-key-lol',
   resave: false,
   saveUninitialized: false,
-  cookie: {secure: false}
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true
+  },
+  store: new (require('express-session').MemoryStore)()
+
 }))
 
 
@@ -414,7 +419,9 @@ app.get('/api/tv_shows', async (req, res) => {
 })
 
 // requirements to start the server
-app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0', function() {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, '0.0.0.0', function() {
   console.log("Server is running... YAYYYY!");
 })     
 

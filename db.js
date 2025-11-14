@@ -1,12 +1,27 @@
 const { Pool } = require("pg");
-require('dotenv').config();
 
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-  port: process.env.DB_PORT
-});
+// Smart configuration that works everywhere
+const getDbConfig = () => {
+  // 1. Render Production (uses DATABASE_URL)
+  if (process.env.DATABASE_URL) {
+    console.log('using render postgres');
+    return {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    };
+  }
+  
+  // 2. Local Development (uses .env file)
+  console.log('using local postgres');
+  return {
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASS,
+    port: process.env.DB_PORT
+  };
+};
 
-module.exports = pool;
+const pool = new Pool(getDbConfig());
+
+module.exports = pool; 
