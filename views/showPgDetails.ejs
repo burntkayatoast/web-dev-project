@@ -47,19 +47,34 @@
                 
                 <!-- BOTTOM SECTION -->
                 <div class="movie-synopsis">
-                    <%= movie.overview %>
-                    <br><br>
-                    <% if (movie.genres && movie.genres.length) { %>
-                    <div class="genre-cont">
-                        <% movie.genres.forEach(genre => { %>
-                            <span class="genre"><%= genre.name %></span>
-                        <% }); %>
+                    <div class="movie-text">
+                        <%= movie.overview %>
+                        <br><br>
+                        <% if (movie.genres && movie.genres.length) { %>
+                        <div class="genre-cont">
+                            <% movie.genres.forEach(genre => { %>
+                                <span class="genre"><%= genre.name %></span>
+                            <% }); %>
+                        </div>
+                        <% } %>
                     </div>
-                    <% } %>
-
                 </div>
 
-                <!-- TODO add an option to add the movie to watched, to-watch or favourite? -->
+                <!-- TODO add a "add to watchlist" and "watched" -->
+                <% if (login === true) { %> 
+                <div class="watchlist-actions">
+                    <button class="watchlist-btn" 
+                            data-movie-id="<%= movie.id %>" 
+                            data-movie-type="<%= movie.title ? 'movie' : 'tv' %>"
+                            data-movie-title="<%= movie.title || movie.name %>"
+                            data-poster-path="<%= movie.poster_path %>"
+                            data-release-date="<%= movie.release_date || movie.first_air_date %>"
+                            data-vote-average="<%= movie.vote_average %>">
+                        Add to Watchlist
+                    </button>
+                </div>
+                <% } %>
+
             </div>
         </div>
     </div>
@@ -68,23 +83,3 @@
 <%- include('partials/footer') -%>
 </body>
 </html>
-        
-<!-- !!!!!!!!!!!!!!!
-
-!! NOTE TO SELF, MOVE THE MOVIE SYNOPSIS UNDERNEATH THE MOVIE POSTER. SHOULD LOOK LIKE THIS
-
-! --------------------
-! -                  -  MOVIE TITLE 
-! -                  -  DIRECTOR/CREATOR
-! -                  -  RATING
-! -     POSTER       -
-! -                  -
-! -                  -
-! -                  -
-! -                  -
-! --------------------
-!
-!   MOVIE DESCRIPTION/SUNOPSIS HERE.
-! 
- 
-!!!!!!!!!!!!!!! -->

@@ -6,6 +6,8 @@
   --body: #191919;
   --dmAccent: #282828;
   --accent: #e6c677;
+  --red: #E35335;
+  --grey: #A9A9A9;
 
   --loveloFont: 'Lovelo', sans-serif;
 
@@ -236,6 +238,10 @@ h3 {
   margin: 20px;
 }
 
+.movie-text {
+  margin-top: 20px;
+}
+
 .movie-details img {
   border-radius: 12px;
   width: 300px;
@@ -366,6 +372,100 @@ h3 {
     transform: translateY(-2px);
 }
 
+
+/* ! watchlist ! */
+.watchlist-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.watchlist-header {
+  font-family: var(--loveloFont);
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: var(--accent);
+  text-align: center;
+  font-weight: 900;
+}
+
+.watchlist-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+.watchlist-item {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 10px;
+  width: 200px; 
+  border-radius: 5px;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.watchlist-item:hover {
+    filter: brightness(70%);
+    transform: scale(1.05);
+}
+
+.watchlist-item:active {
+    filter: brightness(70%);
+    transform: scale(0.95);
+}
+
+.watchlist-item img {
+  width: 100%;
+  border-radius: 5px;
+  display: block;
+}
+
+.watchlist-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.watchlist-btn {
+  color: var(--btn);
+  border: none;
+  background: none;
+  padding: 1em;
+  font-size: 110%;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.watchlist-btn.added {
+  color: #E35335;
+}
+.watchlist-btn.added:hover {
+  color: #E35335 ;
+}
+
+.watchlist-btn:hover {
+  color: var(--accent);
+}
+
+.watchlist-btn:active {
+  transform: translateY(0);
+}
+
+.empty-watchlist {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--white);
+}
+
+.empty-watchlist-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
 /* loading animation hehe */
 .loader {
   overflow: hidden;
@@ -446,6 +546,9 @@ h3 {
   /* BOTTOM SECTION */
   .movie-synopsis {
     width: 100%;
+  }
+  .movie-text {
+    margin-top: 0;
   }
 
   .movie-synopsis h3 {

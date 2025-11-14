@@ -1,33 +1,31 @@
 <%- include('partials/header') -%>
+  <div id="content">
+    <center>
+      <div class="image">
+        <img id="profileImage" src="/images/default.jpg">
+      </div>
+    </center>
+    
+    <p>
+      <label for="file-path">
+        <i class="bi bi-pencil-square"></i> <span>change your profile pic</span>
+      </label>
+      <input type="file" accept="image/jpeg, image/png, image/jpg" id="file-path" class="user-file">
+    </p>
+    
+    <p>
+      <i class="bi bi-list-ul"></i> <a class="spacing" href="#your lists">your lists (move to nav if logged in)</a>
+    </p>
+    
+    <p><i class="bi bi-info-circle-fill"></i> <a class="spacing" href="/about">about us</a></p>
 
-          <div id="content">
-            <center>
-              <div class="image">
-                <img id="profileImage" src="/images/default.jpg">
-              </div>
-            </center>
-            
-            <p>
-              <label for="file-path">
-                <i class="bi bi-pencil-square"></i> <span>change your profile pic</span>
-              </label>
-              <input type="file" accept="image/jpeg, image/png, image/jpg" id="file-path" class="user-file">
-            </p>
-            
-            <p>
-              <i class="bi bi-list-ul"></i> <a class="spacing" href="#your lists">your lists (move to nav if logged in)</a>
-            </p>
-            
-            <p><i class="bi bi-info-circle-fill"></i> <a class="spacing" href="/about">about us</a></p>
+    <p><i class="bi bi-box-arrow-right"></i> <a class="spacing" href="/logout">log out</a></p>
+                
+  </div>  
 
-            <p><i class="bi bi-box-arrow-right"></i> <a class="spacing" href="/logout">log out</a></p>
-                       
-          </div>  
-        
 
-        
-        <%- include('partials/footer') -%>
-    <script src="/app/profile.js"></script>
-    </body>
+<%- include('partials/footer') -%>
+<script src="/app/profile.js"></script>
+</body>
 </html>
         
