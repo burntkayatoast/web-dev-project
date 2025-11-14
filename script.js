@@ -425,14 +425,6 @@ app.get('/api/tv_shows', async (req, res) => {
   }
 })
 
-// requirements to start the server
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, '0.0.0.0', function() {
-  console.log("Server is running... YAYYYY!");
-})     
-
-
 
 // !  WATCHLIST ROUTES ! //
 app.post('/api/watchlist', requireAuth, async (req, res) => {
@@ -529,3 +521,12 @@ app.get('/watchlist', requireAuth, (req, res) => {
   res.render('watchlist');
   console.log('the watchlist page is loaded');
 });
+
+
+
+// requirements to start the server
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, '0.0.0.0', function() {
+  console.log("Server is running... YAYYYY!");
+})     
