@@ -19,10 +19,10 @@ app.use('/images', express.static('images'))
 
 app.use(session({
   secret: 'scene-it-super-secret-key-lol',
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   cookie: {
-    secure: process.env.NODE_ENV === 'production',
+    secure: false,
     httpOnly: true
   },
   store: new (require('express-session').MemoryStore)()
@@ -151,12 +151,19 @@ app.post("/register", async (req, res) => {
         // auto-login after registration
         req.session.userId = newUser.id;
         req.session.user = {
-            id: newUser.id,
-            username: newUser.username,
-            email: newUser.email
+          id: newUser.id,
+          username: newUser.username,
+          email: newUser.email
         };
 
-        res.redirect("/");
+        req.session.save((err) => {
+          if (err) {
+            console.error('session save error:', err);
+            return res.redirect('/login');
+          }
+          console.log('login session saved.');
+          res.redirect("/");
+        });
     } catch (err) {
         console.error(err);
         res.render("register", { 
