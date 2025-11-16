@@ -11,7 +11,7 @@ create table users (
   username varchar(25),
   email varchar(50) unique not null,
   profile_picture varchar(500) default '/images/default.jpg', 
-  password varchar(20) not null
+  password varchar(300) not null
 );
 
 -- movies table 

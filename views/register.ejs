@@ -2,6 +2,9 @@
 
         <h2>Enter Details</h2>
         <div class="register-container">
+            <% if (typeof error !== "undefined") { %>
+                <p class="error-message"><%= error %></p>
+            <% } %>
             <form action="/register" method="POST" class="register-form">         
                 <input type="text" name="firstname" placeholder="First Name" required>
                 <input type="text" name="lastname" placeholder="Last Name" required>

@@ -132,35 +132,34 @@ app.post("/register", async (req, res) => {
   try {
     const result = await pool.query(
       `INSERT INTO users (firstname, lastname, username, email, password)
-      VALUES ($1, $2, $3, $4, $5) RETURNING id, username, email`,
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING *`,
       [firstname, lastname, username, email, password]
-    )
+    );
 
-    const newUser = result.rows[0];
-    
-    // auto-login after registration
-    req.session.userId = newUser.id;
-    req.session.user = {
-      id: newUser.id,
-      username: newUser.username,
-      email: newUser.email
-    };
+    req.session.userId = result.rows[0].id;
+    res.redirect("/profile");
 
-    req.session.save((err) => {
-      if (err) {
-      console.error('session save error:', err)
-      return res.redirect('/login')
-      }
-      console.log('login session saved.')
-      res.redirect("/")
-    })
   } catch (err) {
-    console.error(err)
-    res.render("register", { 
-      error: "Registration failed - user may already exist"
-    })
+    console.error("Register error:", err);
+
+    let message = "Registration failed.";
+
+    // Duplicate email
+    if (err.code === "23505") {
+      message = "This email is already registered.";
+    }
+
+    // Too long for column
+    if (err.code === "22001") {
+      message = "One of the fields is too long.";
+    }
+
+    // Default fallback
+    res.render("register", { error: message });
   }
-})
+});
+
 
 
 // login section

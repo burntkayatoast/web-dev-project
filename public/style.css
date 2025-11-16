@@ -584,6 +584,16 @@ h3 {
   cursor: pointer;
 }
 
+.error-message {
+    background: #ff3b30;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
 
 /* loading animation hehe */
 .loader {
