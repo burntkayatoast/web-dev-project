@@ -62,13 +62,6 @@ app.get('/', (req, res) => {
   console.log('the home page is loaded')
 })
 
-// search page
-app.get('/search', (req, res) => {
-  const isMovie = Math.floor(Math.random() * (2))
-  res.render("search", {isMovie})
-  console.log('the search page is loaded')
-})
-
 // popular movies
 app.get('/popular_movies', (req, res) => {
   res.render("popular_movies") 
@@ -272,50 +265,6 @@ app.get('/tv_shows/:id', async (req, res) => {
   } catch (err) {
     console.error(err)
     res.status(500).json({message: 'Error loading tv show details'})
-  }
-})
-
-// search results
-app.get('/search/results', (req, res) => {
-  res.render("searchResults")
-  console.log('the search results page is loaded')
-})
-
-// fetching movies from api
-app.get('/api/search/tv', async (req, res) => {
-  const query = req.query.q
-
-  if(!query) {
-    return res.status(400).json({message: 'Please enter a search'})
-  }
-  
-  try {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=1`
-    )
-    res.json(response.data.results)
-  } catch (err) {
-    console.error(err)
-    res.status(500).json({message: 'Error searching movies'})
-  }
-})
-
-// fetching movies from api
-app.get('/api/search/movies', async (req, res) => {
-  const query = req.query.q
-
-  if(!query) {
-    return res.status(400).json({message: 'Please enter a search'})
-  }
-  
-  try {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=1`
-    )
-    res.json(response.data.results)
-  } catch (err) {
-    console.error(err)
-    res.status(500).json({message: 'Error searching movies'})
   }
 })
 
