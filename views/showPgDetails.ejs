@@ -73,6 +73,13 @@
                         Add to Watchlist
                     </button>
                 </div>
+
+                <div class="review-section">
+                    <button class="submit-review-btn" onclick="window.location.href='/addReview/<%= movie.id %>?type=<%= movie.title ? 'movie' : 'tv' %>'">
+                        Add a Review
+                    </button>
+
+                </div>
                 <% } %>
 
             </div>

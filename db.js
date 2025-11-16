@@ -4,7 +4,7 @@ const { Pool } = require("pg");
 const getDbConfig = () => {
   // 1. Render Production (uses DATABASE_URL)
   if (process.env.DATABASE_URL) {
-    console.log('using render postgres');
+    console.log('Using Render Postgres');
     return {
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false }
@@ -12,7 +12,7 @@ const getDbConfig = () => {
   }
   
   // 2. Local Development (uses .env file)
-  console.log('using local postgres');
+  console.log('Using Local Postgres');
   return {
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
