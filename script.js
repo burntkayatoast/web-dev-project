@@ -7,6 +7,66 @@ const session = require('express-session') // for login/session
 const app = express() // creates an express app
 const axios = require('axios')
 const pool = require("./db")
+
+async function initDatabase() {
+  try {
+    console.log("Checking & creating tables if missing...");
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        firstname VARCHAR(20),
+        lastname VARCHAR(20),
+        username VARCHAR(25),
+        email VARCHAR(50) UNIQUE NOT NULL,
+        profile_picture VARCHAR(500) DEFAULT '/images/default.jpg',
+        password VARCHAR(255) NOT NULL
+      );
+    `);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS movies (
+        id SERIAL PRIMARY KEY,
+        tmdb_id INTEGER NOT NULL,
+        title VARCHAR(500) NOT NULL,
+        poster_path VARCHAR(500),
+        release_date DATE,
+        vote_average DECIMAL(3,1),
+        media_type VARCHAR(20) CHECK (media_type IN ('movie','tv')),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(tmdb_id, media_type)
+      );
+    `);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS user_movies (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+        movie_id INTEGER REFERENCES movies(id) ON DELETE CASCADE,
+        added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(user_id, movie_id)
+      );
+    `);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS user_reviews (
+        id SERIAL PRIMARY KEY,
+        user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+        movie_id INTEGER REFERENCES movies(id) ON DELETE CASCADE,
+        media_type VARCHAR(10) NOT NULL,
+        rating INTEGER CHECK (rating BETWEEN 1 AND 10),
+        review_text TEXT,
+        added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(user_id, movie_id)
+      );
+    `);
+
+    console.log("Database is ready ✔️");
+  } catch (err) {
+    console.error("Failed to initialize database:", err);
+  }
+}
+
 app.set('view engine', 'ejs') // sets the view engine to ejs
 
 app.use(express.static('views')) // Allow access to views folder
@@ -638,6 +698,8 @@ app.post("/delete-review", requireAuth, async (req, res) => {
 // requirements to start the server
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, '0.0.0.0', function() {
-  console.log("Server is running... YAYYYY!")
-})   
+initDatabase().then(() => {
+  app.listen(PORT, '0.0.0.0', function() {
+    console.log("Server is running... YAYYYY!")
+  })   
+})
