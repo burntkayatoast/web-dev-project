@@ -292,6 +292,15 @@ app.post("/edit-profile", async (req, res) => {
 
   // update session data too
   req.session.user = result.rows[0];
+  req.session.user = {
+  id: result.rows[0].id,
+  firstname: result.rows[0].firstname,
+  lastname: result.rows[0].lastname,
+  username: result.rows[0].username,
+  email: result.rows[0].email,
+  profile_picture: result.rows[0].profile_picture
+};
+
 
   res.redirect("/profile")
   } catch (err) {
