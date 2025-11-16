@@ -61,7 +61,7 @@ async function initDatabase() {
       );
     `);
 
-    console.log("Database is ready ✔️");
+    console.log("Database is ready");
   } catch (err) {
     console.error("Failed to initialize database:", err);
   }
@@ -255,9 +255,13 @@ app.post("/login", async (req, res) => {
   req.session.userId = user.id;
   req.session.user = {
     id: user.id,
+    firstname: user.firstname,
+    lastname: user.lastname,
     username: user.username,
-    email: user.email
+    email: user.email,
+    profile_picture: user.profile_picture
   };
+
 
   res.redirect("/")
   } catch (err) {
