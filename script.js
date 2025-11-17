@@ -127,9 +127,19 @@ app.get('/popular_movies', (req, res) => {
 })
 
 // profile
-app.get('/profile', (req, res) => {
-  res.render("profile")
+app.get('/profile', async (req, res) => {
   console.log('the profile page is loaded')
+
+  try {
+      const details = await pool.query("select * from users where id = $1", [req.session.userId]);
+
+      console.table(details.rows);
+
+      res.render("profile");
+  } catch (err) {
+      console.error(err);
+      res.send("Database error");
+  }
 })
 
 // free movies
@@ -159,16 +169,18 @@ app.get('/about', (req, res) => {
 // all users section
 app.get('/allUsers', async (req, res) => {
   try {
-  const result = await pool.query("SELECT * FROM users")
-  const users = result.rows;
+    const result = await pool.query("select * from users")
+    const users = result.rows;
+    console.table(result.rows);
 
-  res.render("allUsers", { users })
-  console.log("the all users page is loaded")
-  } catch (err) {
-  console.error(err)
-  res.send("Error loading users")
-  }
-})
+
+    res.render("allUsers", { users })
+    console.log("the all users page is loaded")
+    } catch (err) {
+    console.error(err)
+    res.send("Error loading users")
+    }
+  })
 
 // logout section
 app.get('/logout', (req, res) => {
@@ -590,15 +602,34 @@ app.delete('/api/watchlist/:tmdb_id/:media_type', requireAuth, async (req, res) 
   }
 })
 
-app.get('/watchlist', requireAuth, (req, res) => {
-  res.render('watchlist')
+app.get('/watchlist', requireAuth, async (req, res) => {
   console.log('the watchlist page is loaded')
+
+  try {
+      const watchlist = await pool.query("select * from user_movies where user_id = $1", [req.session.userId]);
+
+      console.table(watchlist.rows);
+      
+      res.render("watchlist");
+  } catch (err) {
+      console.error(err);
+      res.send("Database error");
+  }
 })
 
 // REVIEWS
-app.get('/reviews', requireAuth, (req, res) => {
-  res.render('reviews')
+app.get('/reviews', requireAuth, async (req, res) => {
   console.log('the reviews page is loaded')
+  try {
+        const review = await pool.query("select * from user_reviews where user_id = $1", [req.session.userId]);
+
+        console.table(review.rows);
+
+        res.render("reviews");
+    } catch (err) {
+        console.error(err);
+        res.send("Database error");
+    }
 })
 
 app.get('/addReview/:movie_id', requireAuth, (req, res) => {
