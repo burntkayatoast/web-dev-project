@@ -127,7 +127,7 @@ app.get('/popular_movies', (req, res) => {
 })
 
 // profile
-app.get('/profile', async (req, res) => {
+app.get('/profile', requireAuth, async (req, res) => {
   console.log('the profile page is loaded')
 
   try {
