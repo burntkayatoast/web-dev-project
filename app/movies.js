@@ -1,34 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const searchBtn = document.getElementById('searchBtn');
-  const searchInput = document.getElementById('searchInput');
-
-  if (!searchBtn || !searchInput) {
-    console.warn('Search elements not found — skipping search listeners');
-    return;
-  }
-
-  searchBtn.addEventListener('click', handleSearch);
-  searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleSearch();
-  });
-
-  async function handleSearch() {
-    const query = searchInput.value.trim();
-    if (!query) {
-      alert('Please enter a movie or TV show name');
-      return;
-    }
-
-    // Clear previous results
-    const container = document.getElementById('searchResults');
-    if (container) container.innerHTML = '<div class="loader"></div>';
-
-    // Run both movie + TV searches
-    await fetchMovies(`/api/search/movies?q=${encodeURIComponent(query)}`, 'searchResults');
-    await fetchMovies(`/api/search/tv?q=${encodeURIComponent(query)}`, 'searchResults');
-  }
-});
-
 
 async function fetchMovies(endPoint, containerId, type) {
     try {

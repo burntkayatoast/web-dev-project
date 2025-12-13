@@ -8,6 +8,7 @@ const app = express() // creates an express app
 const axios = require('axios')
 const pool = require("./db")
 
+// needed so this works on render
 async function initDatabase() {
   try {
     console.log("Checking & creating tables if missing...");
@@ -231,7 +232,6 @@ app.post("/register", async (req, res) => {
     res.render("register", { error: message });
   }
 });
-
 
 
 // login section

@@ -281,94 +281,134 @@ h3 {
 
 /* for login screen */
 .login-container {
-  display: flex;
-  justify-content: center;
+  display: block;
+  max-width: 400px;
+  margin: 40px auto;
   padding: 20px;
 }
 
 .login-form {
-  display: flex;
-  gap: 10px;
+  display: block;
+  padding: 30px;
+  background: var(--dmAccent);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.login-form h2 {
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: var(--loveloFont);
+  font-size: 28px;
 }
 
 .login-form input {
-  padding: 8px 10px;
-  border: 1px solid #555;
-  border-radius: 20px;
-  background: #eee;
-  font-size: 14px;
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 2px solid #444;
+  border-radius: 25px;
+  background: var(--dark);
+  color: var(--white);
+  font-size: 16px;
   outline: none;
+  transition: all 0.3s;
+}
+
+.login-form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(230, 198, 119, 0.2);
 }
 
 .login-form input::placeholder {
-  color: #666;
+  color: var(--grey);
 }
 
 .login-form button {
-  padding: 8px 16px;
-  background: #ffffff;
-  border: 1px solid #333;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.login-form button:hover {
-  background: #ddd;
-}
-
-.register-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-  color: white;
-}
-
-.register-container h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.register-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 350px;       
-}
-
-.register-form input,
-.register-form select {
-  padding: 12px 15px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  background: #e0e0e0;
-  outline: none;
-  transition: 0.2s;
-}
-
-.register-form input:focus,
-.register-form select:focus {
-  background: #ffffff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
-}
-
-.register-form button {
+  display: block;
+  width: 100%;
   padding: 12px;
+  margin-top: 10px;
   border: none;
   border-radius: 25px;
-  background: #ffffff;
-  color: black;
+  background: var(--accent);
+  color: var(--dark);
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.3s;
+}
+
+.login-form button:hover {
+  background: #d4b15e;
+  transform: translateY(-2px);
+}
+
+.register-container {
+  display: block;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.register-form {
+  display: block;
+  padding: 30px;
+  background: var(--dmAccent);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.register-form h2 {
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: var(--loveloFont);
+  font-size: 28px;
+}
+
+.register-form input {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 2px solid #444;
+  border-radius: 25px;
+  background: var(--dark);
+  color: var(--white);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.register-form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(230, 198, 119, 0.2);
+}
+
+.register-form input::placeholder {
+  color: var(--grey);
+}
+
+.register-form button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 25px;
+  background: var(--accent);
+  color: var(--dark);
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .register-form button:hover {
-  background: #dddddd;
+  background: #d4b15e;
   transform: translateY(-2px);
 }
 
@@ -465,6 +505,116 @@ h3 {
   margin-bottom: 20px;
   opacity: 0.5;
 }
+
+
+/* watchlist bar */
+.watchlist-bar {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  padding: 15px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+/* search bar */
+.search-container {
+  flex: 1;
+  position: relative;
+}
+
+#watchlist-search {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.clear-search {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ccc;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* filter button */
+.filter-container {
+  position: relative;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+  display: none;
+  z-index: 100;
+}
+
+.filter-dropdown.show {
+  display: block;
+}
+
+.filter-option {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.filter-option:hover {
+  background: #f5f5f5;
+}
+
+/* item type indicator */
+.item-type {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+/* empty state */
+.empty-watchlist {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-watchlist button {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-search-btn {
+  background: #6c757d !important;
+}
+
 
 .review-title {
   font-size: 28px;
@@ -592,6 +742,10 @@ h3 {
     text-align: center;
     margin-bottom: 15px;
     font-weight: bold;
+}
+
+.label {
+  margin-left: 5%;
 }
 
 
