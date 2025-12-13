@@ -755,7 +755,10 @@ h3 {
   margin-left: 5%;
 }
 
-
+.back-arrow {
+  margin-left: 2%;
+  font-size: xx-large;
+}
 
 /* loading animation hehe */
 .loader {
